@@ -1,0 +1,19 @@
+{
+  "name": "lessn",
+  "version": "1.0.0",
+  "description": "This is the tutor and student app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://hs_wdeveloper@bitbucket.org/gauravdeep_/lessn.git"
+  },
+  "author": "Lessn",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/gauravdeep_/lessn#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
