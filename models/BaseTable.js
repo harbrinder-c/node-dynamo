@@ -76,7 +76,7 @@ module.exports = {
           Item: {
               "PK": 'University',
               "SK": uuid(),
-              "name": req.body.city_name
+              "name": req.body.university_name
           }
       };
 
