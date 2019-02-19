@@ -1,4 +1,5 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 var path = require('path');
 const passport = require('passport');
@@ -11,6 +12,7 @@ const app = express();
 require('./config/passport')(passport);
 
 // EJS
+app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 // Express body parser
@@ -46,6 +48,7 @@ app.use(function(req, res, next) {
 // Routes
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
+app.use('/universities', require('./routes/university.js'));
 
 const PORT = process.env.PORT || 5000;
 
