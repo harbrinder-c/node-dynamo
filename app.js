@@ -49,6 +49,7 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/universities', require('./routes/university.js'));
+app.use('/courses', require('./routes/courses.js'));
 
 const PORT = process.env.PORT || 5000;
 

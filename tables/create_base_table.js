@@ -22,6 +22,7 @@ var params = {
         { AttributeName: "PK", AttributeType: "S" },
         { AttributeName: "SK", AttributeType: "S" },
         { AttributeName: "email", AttributeType: "S" },
+        { AttributeName: "university_uuid", AttributeType: "S" },
     ],
     ProvisionedThroughput: {
         ReadCapacityUnits: 5,
@@ -34,8 +35,7 @@ var params = {
                 {
                     AttributeName: 'email',
                     KeyType: 'HASH',
-                },
-                { AttributeName: 'SK', KeyType: 'RANGE' }
+                }
             ],
             Projection: {
                 ProjectionType: "ALL"
@@ -46,11 +46,15 @@ var params = {
             }
         },
         { 
-            IndexName: 'GSI-Universities', 
+            IndexName: 'GSI-University-Courses', 
             KeySchema: [
                 {
-                    AttributeName: 'PK',
+                    AttributeName: 'university_uuid',
                     KeyType: 'HASH',
+                },
+                { 
+                    AttributeName: 'SK', 
+                    KeyType: 'RANGE' 
                 }
             ],
             Projection: {
