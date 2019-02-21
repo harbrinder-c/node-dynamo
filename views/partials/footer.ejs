@@ -24,8 +24,102 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="../../javascript/bootbox.min.js"></script>
 <script>
-$('button').click(function(){
-    $('#addUniversityModal').modal('show');
+$('.add_university').click(function(){
+  $("#addUniversityModal input[type=hidden][name=action]").val('add');
+  $("#addUniversityModal input[type=hidden][name=university_uuid]").val('');
+  $('#addUniversityModal button[type=submit]').html('Add');
+  $('#addUniversityModal').modal('show');
+});
+
+function getUniversity(university_uuid){
+  $.ajax({
+    url: '/universities/edit',
+    type: 'GET',
+    data: {
+      university_uuid : university_uuid
+    },
+    success: function(data){
+      $("#addUniversityModal input[type=hidden][name=action]").val('edit');
+      $("#addUniversityModal input[type=hidden][name=university_uuid]").val(data.Item.SK);
+      $("#addUniversityModal input[name=university_address]").val(data.Item.address);
+      $("#addUniversityModal input[name=university_name]").val(data.Item.name);
+      $('#addUniversityModal button[type=submit]').html('Update');
+      $("#addUniversityModal").modal("show");
+    },
+    error: function(err){
+      console.log(err);
+    }
   });
+}
+
+function deleteUniversity(university_uuid){
+
+  bootbox.confirm("Are you sure you want to delete?", function(result){ 
+    if(result){
+      $.ajax({
+        url: '/universities/delete',
+        type: 'GET',
+        data: {
+          university_uuid : university_uuid
+        },
+        success: function(data){
+          window.location.reload();
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+    } 
+  });
+}
+$('.add_course').click(function(){
+  $("#addCourseModal input[type=hidden][name=action]").val('add');
+  $("#addCourseModal input[type=hidden][name=course_uuid]").val('');
+  $('#addCourseModal button[type=submit]').html('Add');
+  $('#addCourseModal').modal('show');
+});
+
+function getCourse(course_uuid){
+  $.ajax({
+    url: '/courses/edit',
+    type: 'GET',
+    data: {
+      course_uuid : course_uuid
+    },
+    success: function(data){
+      $("#addCourseModal input[type=hidden][name=action]").val('edit');
+      $("#addCourseModal input[type=hidden][name=course_uuid]").val(data.Item.SK);
+      $("#addCourseModal select").val(data.Item.university_uuid);
+      $("#addCourseModal input[name=course_name]").val(data.Item.name);
+      $('#addCourseModal button[type=submit]').html('Update');
+      $("#addCourseModal").modal("show");
+    },
+    error: function(err){
+      console.log(err);
+    }
+  });
+}
+
+function deleteCourse(course_uuid){
+
+  bootbox.confirm("Are you sure you want to delete?", function(result){ 
+    if(result){
+      $.ajax({
+        url: '/courses/delete',
+        type: 'GET',
+        data: {
+          course_uuid : course_uuid
+        },
+        success: function(data){
+          window.location.reload();
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+    } 
+  });
+}
 </script>

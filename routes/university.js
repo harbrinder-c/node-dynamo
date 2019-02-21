@@ -8,17 +8,39 @@ router.get('/', (req, res) => {
     BaseTable.getUniversities().then(function(result){
       console.log('Finished city list function');
       res.render('universities/index', {
-        universities: result
+        universities: result,
+        active : 'universities'
       });
     });
 });
 
 //create University in database and redirect to listing
 router.post('/add', (req, res) => {
-    console.log('Calling add University function');
-    BaseTable.addUniversity(req).then(function(result){
-    	console.log('Finished add University function');
-    	res.redirect('/universities');
+    if(req.body.action && req.body.action == 'add')
+    {
+      BaseTable.addUniversity(req).then(function(result){
+      	res.redirect('/universities');
+      });
+    }
+    else
+    {
+      BaseTable.updateUniversity(req).then(function(result){
+        res.redirect('/universities');
+      });
+    }    
+});
+
+//create University in database and redirect to listing
+router.get('/edit', (req, res) => {
+    BaseTable.getUniversity(req.query.university_uuid).then(function(course){
+      res.json(course);
+    });    
+});
+
+//create University in database and redirect to listing
+router.get('/delete', (req, res) => {
+    BaseTable.deleteUniversity(req.query.university_uuid).then(function(course){
+      res.json(course);
     });    
 });
 
