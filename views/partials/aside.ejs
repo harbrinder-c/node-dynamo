@@ -3,12 +3,12 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li>
+        <li class="<%= (active == 'universities') ? 'active':'' %>">
           <a href="./universities">
             <i class="fa fa-university"></i> <span>Universities</span>
           </a>
         </li>
-        <li>
+        <li class="<%= (active == 'courses') ? 'active':'' %>">
           <a href="./courses">
             <i class="fa fa-book"></i> <span>Courses</span>
           </a>
