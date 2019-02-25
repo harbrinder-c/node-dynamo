@@ -2,13 +2,9 @@ var AWS = require("aws-sdk");
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid/v1');
 
+const db = require('../config/config').db;
 
-AWS.config.update({
-  accessKeyId: "sdfdfsdf",
-  secretAccessKey: "sdfsdf",
-  region: "eu-west-2",
-  endpoint: "http://localhost:8000"
-});
+AWS.config.update(db);
 var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
 
