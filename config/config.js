@@ -7,7 +7,7 @@ const config = {
 	   region:process.env.REGION,
 	   endpoint: process.env.DB_HOST_ENDPOINT || 'http://localhost:8000',
 	},
-	base_table : name: process.env.DB_Table || 'BaseTable'
+	base_table : process.env.DB_Table || 'BaseTable'
 };
 
 module.exports = config;
