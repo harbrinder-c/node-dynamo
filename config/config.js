@@ -3,9 +3,10 @@ require('dotenv').config(); // this loads the defined variables from .env
 const config = {
 	dev: {
 		db: {	   	   
-		   accessKeyId: process.env.DB_ACCESS_KEY || '',
-		   secretAccessKey: process.env.DB_SECRET || '',
-		   region:process.env.REGION,		   
+		   accessKeyId: process.env.DEV_DB_ACCESS_KEY || '',
+		   secretAccessKey: process.env.DEV_DB_SECRET || '',
+		   region:process.env.DEV_REGION,
+		   endpoint: process.env.DEV_DB_HOST_ENDPOINT || 'http://dynamodb.us-east-2.amazonaws.com',	   
 		},
 		base_table : process.env.DB_Table || 'BaseTable'
 	},
