@@ -5,7 +5,11 @@ const passport = require('passport');
 // Load User model
 const User = require('../models/User');
 // Login Page
-router.get('/login', (req, res) => res.render('new/login'));
+router.get('/login', (req, res) => 
+  res.render('new/login', {
+      layout: false
+   })
+);
 
 // Register Page
 // router.get('/register', (req, res) => res.render('register'));
@@ -90,6 +94,7 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
+  console.log("User login");
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/users/login',

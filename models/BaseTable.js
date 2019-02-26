@@ -14,6 +14,7 @@ module.exports = {
 
   //this function will be used to create a new user
   getUser: function(userEmail) {
+    console.log("I am here in BaseTable getUser function");
     return new Promise(function(resolve,reject) {
       var params = {
           TableName: "BaseTable",
