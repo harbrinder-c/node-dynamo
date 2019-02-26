@@ -33,6 +33,47 @@ module.exports = {
     });
   },
 
+  //this function will be used to create a new user
+  addUser: function(req) {
+    return new Promise(function(resolve,reject) {
+
+      var params = {
+          TableName: "BaseTable",
+          Item: {
+              "PK": 'user',
+              "SK": uuid(),
+              "name": req.body.name,
+              "email": req.body.email,
+              "password": req.body.password
+          }
+      };
+
+      //bcrypt the password and save the user in DB
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(params.Item.password, salt, (err, hash) => {
+          if (err) 
+            throw err;
+          params.Item.password = hash;
+
+
+          docClient.put(params, function(err, data) {
+             if (err) {
+                 resolve(err);
+             } else {
+                resolve(data);
+             }
+          });
+
+
+        });
+      });
+
+
+
+
+    });
+  },
+
   //this function will be return all the added Universities in the database
   getUniversities: function() {
     return new Promise(function(resolve,reject) {

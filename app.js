@@ -5,7 +5,7 @@ var path = require('path');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
+var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const app = express();
 
 // Passport Config
@@ -50,6 +50,7 @@ app.use('/', require('./routes/index.js'));
 // app.use('/users', require('./routes/users.js'));
 app.use('/universities', require('./routes/university.js'));
 app.use('/courses', require('./routes/courses.js'));
+app.use('/api', require('./routes/api/users.js'));
 
 const PORT = process.env.PORT || 5000;
 

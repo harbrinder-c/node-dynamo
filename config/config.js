@@ -8,7 +8,8 @@ const config = {
 		   region:process.env.DEV_REGION,
 		   endpoint: process.env.DEV_DB_HOST_ENDPOINT || 'http://dynamodb.us-east-2.amazonaws.com',	   
 		},
-		base_table : process.env.DB_Table || 'BaseTable'
+		base_table : process.env.DB_Table || 'BaseTable',
+		secret: 'xyz'
 	},
 	local:{
 		db: {	   	   
@@ -17,7 +18,8 @@ const config = {
 		   region:process.env.REGION,
 		   endpoint: process.env.DB_HOST_ENDPOINT || 'http://localhost:8000',
 		},
-		base_table : process.env.DB_Table || 'BaseTable'
+		base_table : process.env.DB_Table || 'BaseTable',
+		secret: 'xyz'
 	}
 };
 
