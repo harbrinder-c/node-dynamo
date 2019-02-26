@@ -4,8 +4,8 @@
     <!-- Modal content-->
     <div class="modal-content">
       <form action="/universities/add" method="post">
-        <input type="hidden" name="action" value="add">
-        <input type="hidden" name="university_uuid">
+        <input type="hidden" name="action" value="add" class="action">
+        <input type="hidden" name="edit_uuid" class="edit_uuid">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Add University</b></h4>
@@ -15,37 +15,37 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="name">Name*: </label> 
-                <input type="text" class="form-control" name="name" />
+                <input type="text" class="form-control name" name="name" />
               </div>
               <div class="form-group">
                 <label for="email_verifier">Email Verifier*: </label> 
-                <input type="text" class="form-control" name="email_verifier" />
+                <input type="text" class="form-control email_verifier" name="email_verifier" />
               </div>
               <div class="form-group">
                 <label for="contact_number">Contact Number*: </label> 
-                <input type="text" class="form-control" name="contact_number" />
+                <input type="text" class="form-control contact_number" name="contact_number" />
               </div>
               <div class="form-group">
                 <label for="web_address">Web Address*: </label> 
-                <input type="text" class="form-control" name="web_address" />
+                <input type="text" class="form-control web_address" name="web_address" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="address">Address*: </label> 
-                <input type="text" class="form-control" name="address" />
+                <input type="text" class="form-control address" name="address" />
               </div>
               <div class="form-group">
                 <label for="city">City*: </label> 
-                <input type="text" class="form-control" name="city" />
+                <input type="text" class="form-control city" name="city" />
               </div>
               <div class="form-group">
                 <label for="state">State*: </label> 
-                <input type="text" class="form-control" name="state" />
+                <input type="text" class="form-control state" name="state" />
               </div>
               <div class="form-group">
                 <label for="zip_code">Zip Code*: </label> 
-                <input type="text" class="form-control" name="zip_code" />
+                <input type="text" class="form-control zip_code" name="zip_code" />
               </div>
             </div>
           </div>          

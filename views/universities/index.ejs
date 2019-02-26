@@ -39,9 +39,13 @@
                 <td><%= university.web_address ? university.web_address: '-' %></td>
                 <td><%= university.email_verifier ? university.email_verifier: '-' %></td>
                 <td><%= university.contact_number ? university.contact_number: '-' %></td>
-      					<td><%= university.address ? university.address: '-' %></td>
+      					<td>
+                  <%= university.address ? university.address: '' %><%= university.city ? ', '+university.city: '' %><%= university.state ? ', '+university.state: '' %><%= university.zip_code ? ', '+university.zip_code: '' %>
+                </td>
                 <td>
-                  <a href="javascript:getUniversity('<%= university.SK %>')"><i class="fa fa-pencil" style="color: orange"></i></a>                    
+                  <a href="javascript:getUniversity('<%= university.SK %>')" class="edit_record" data-edit_uuid="<%= university.SK %>" data-action="edit" data-name="<%= university.name %>" data-contact_number="<%= university.contact_number %>"  data-web_address="<%= university.web_address %>"  data-email_verifier="<%= university.email_verifier %>"  data-address="<%= university.address %>" data-city="<%= university.city %>"  data-state="<%= university.state %>"  data-zip_code="<%= university.zip_code %>">
+                    <i class="fa fa-pencil" style="color: orange"></i>
+                  </a>                    
                   <a href="javascript:deleteUniversity('<%= university.SK %>')"><i class="fa fa-trash" style="color: red"></i></a>                    
                 </td>
       				</tr>    

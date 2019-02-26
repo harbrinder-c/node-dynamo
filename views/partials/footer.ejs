@@ -25,12 +25,29 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script src="../../javascript/bootbox.min.js"></script>
-<script>
-$('.add_university').click(function(){
-  $("#addUniversityModal input[type=hidden][name=action]").val('add');
-  $("#addUniversityModal input[type=hidden][name=university_uuid]").val('');
-  $('#addUniversityModal button[type=submit]').html('Add');
-  $('#addUniversityModal').modal('show');
+<script src="../../javascript/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+  //initialize timepickers
+  $('.timepicker').timepicker();
+
+  //open add university pop-up
+  $('.add_university').click(function(){
+    $("#addUniversityModal input[type=hidden][name=action]").val('add');
+    $("#addUniversityModal input[type=hidden][name=university_uuid]").val('');
+    $('#addUniversityModal button[type=submit]').html('Add');
+    $('#addUniversityModal').modal('show');
+  });
+
+  //fill value on click of edit button on any of the listing
+  $('.edit_record').click(function(){
+    $.each($(this).data(),function(i, val){
+      $("."+i).val(val);
+    });
+
+    $('button[type=submit]').html('Update');
+  });
 });
 
 function getUniversity(university_uuid){

@@ -75,8 +75,14 @@ module.exports = {
           Item: {
               "PK": 'University',
               "SK": uuid(),
-              "name": req.body.university_name,
-              "address": req.body.university_address
+              "name": req.body.name,
+              "email_verifier": req.body.email_verifier,
+              "contact_number": req.body.contact_number,
+              "web_address": req.body.web_address,
+              "address": req.body.address,
+              "city": req.body.city,
+              "state": req.body.state,
+              "zip_code": req.body.zip_code
           }
       };
 
@@ -139,16 +145,28 @@ module.exports = {
           TableName: "BaseTable",
           Key: {
             "PK": "University",
-            "SK": req.body.university_uuid
+            "SK": req.body.edit_uuid
           },
-          UpdateExpression: 'set #name = :new_name, #address = :new_address',
+          UpdateExpression: 'set #name = :new_name, #email_verifier = :new_email_verifier, #contact_number = :new_contact_number, #web_address = :new_web_address,  #address = :new_address, #city = :new_city, #state = :new_state, #zip_code = :new_zip_code',
           ExpressionAttributeValues: {
-            ':new_name' : req.body.university_name,
-            ':new_address' : req.body.university_address
+            ":new_name" : req.body.name,
+            ":new_email_verifier" : req.body.email_verifier,
+            ":new_contact_number" : req.body.contact_number,
+            ":new_web_address" : req.body.web_address,
+            ":new_address" : req.body.address,
+            ":new_city" : req.body.city,
+            ":new_state" : req.body.state,
+            ":new_zip_code" : req.body.zip_code
           },
           ExpressionAttributeNames: {
             "#name": "name",
-            "#address": "address"
+            "#email_verifier": "email_verifier",
+            "#contact_number": "contact_number",
+            "#web_address": "web_address",
+            "#address": "address",
+            "#city": "city",
+            "#state": "state",
+            "#zip_code": "zip_code"
           }
       };
       
@@ -249,8 +267,12 @@ module.exports = {
           Item: {
               "PK": 'Course',
               "SK": uuid(),
-              "name": req.body.course_name,
-              "university_uuid": req.body.university_uuid
+              "name": req.body.name,
+              "university_uuid": req.body.university_uuid,
+              "code": req.body.code,
+              "credit": req.body.credit,
+              "from_time": req.body.from_time,
+              "to_time": req.body.to_time
           }
       };
 
@@ -271,16 +293,24 @@ module.exports = {
           TableName: "BaseTable",
           Key: {
             "PK": "Course",
-            "SK": req.body.course_uuid
+            "SK": req.body.edit_uuid
           },
-          UpdateExpression: 'set #name = :new_name, #university_uuid = :new_university_uuid',
+          UpdateExpression: 'set #name = :new_name, #university_uuid = :new_university_uuid, #code = :new_code, #credit = :new_credit, #from_time = :new_from_time, #to_time = :new_to_time',
           ExpressionAttributeValues: {
-            ':new_name' : req.body.course_name,
-            ':new_university_uuid' : req.body.university_uuid
+            ":new_name" : req.body.name,
+            ":new_university_uuid" : req.body.university_uuid,
+            ":new_code": req.body.code,
+            ":new_credit": req.body.credit,
+            ":new_from_time": req.body.from_time,
+            ":new_to_time": req.body.to_time
           },
           ExpressionAttributeNames: {
             "#name": "name",
-            "#university_uuid": "university_uuid"
+            "#university_uuid": "university_uuid",
+            "#code": "code",
+            "#credit": "credit",
+            "#from_time": "from_time",
+            "#to_time": "to_time"
           }
       };
       

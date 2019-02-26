@@ -22,20 +22,28 @@
         <div class="box-body no-padding">
           <table class="table table-bordered">
             <tr>
-              <th>SK</th>
+              <th>Sr No:</th>
               <th>Name</th>
+              <th>Code</th>
               <th>University</th>
+              <th>Credit</th>
+              <th>Timing</th>
               <th>Actions</th>
             </tr>
         	<%
       			courses.Items.forEach(function(course, index) {
       				%>
       				<tr>
-      					<td><%= course.SK %></td>
+      					<td><%= (index+1) %></td>
                 <td><%= course.name ? course.name: '-' %></td>
+                <td><%= course.code ? course.code: '-' %></td>
                 <td><%= course.university_uuid ? course.university_uuid: '-' %></td>
+                <td><%= course.credit ? course.credit: '-' %></td>
                 <td>
-                  <a href="javascript:getCourse('<%= course.SK %>')"><i class="fa fa-pencil" style="color: orange"></i></a>                    
+                  <%= course.from_time ? course.from_time: 'N/A' %> - <%= course.to_time ? course.to_time: 'N/A' %>
+                </td>
+                <td>
+                  <a href="javascript:getCourse('<%= course.SK %>')" class="edit_record" data-edit_uuid="<%= course.SK %>" data-action="edit" data-name="<%= course.name %>"  data-code="<%= course.code %>"  data-university_uuid="<%= course.university_uuid %>"  data-credit="<%= course.credit %>"  data-from_time="<%= course.from_time %>"  data-to_time="<%= course.to_time %>"><i class="fa fa-pencil" style="color: orange"></i></a>                    
                   <a href="javascript:deleteCourse('<%= course.SK %>')"><i class="fa fa-trash" style="color: red"></i></a>                    
                 </td>
       				</tr>    
@@ -53,46 +61,4 @@
 </section>
 <!-- /.content -->
 
-<!-- Add University Modal starts here -->
-<div id="addCourseModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <form action="/courses/add" method="post">
-        <input type="hidden" name="action" value="add">
-        <input type="hidden" name="course_uuid">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Course</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="university_uuid">University: </label> 
-            <select class="form-control" name="university_uuid" >
-              <option value="">Select University</option>
-              <%
-                universites.Items.forEach(function(uni, index){
-                  %>
-                  <option value="<%= uni.SK %>"><%= uni.name %></option>
-                  <%
-                }); 
-              %>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="course_name">Name: </label> 
-            <input type="text" class="form-control" name="course_name" />
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- Add University Modal ends here -->
-
-
-
+<%- include ../courses/add_course.ejs %>
