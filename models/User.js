@@ -2,7 +2,7 @@ var AWS = require("aws-sdk");
 const bcrypt = require('bcryptjs');
 
 // DB Config
-const db = require('../config/keys').dynamoKeys;
+const db = require('../config/config').db;
 
 AWS.config.update(db);
 var docClient = new AWS.DynamoDB.DocumentClient();
