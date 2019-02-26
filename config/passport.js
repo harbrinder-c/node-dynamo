@@ -45,7 +45,7 @@ module.exports = function(passport) {
           return done(null, false, { message: 'That email is not registered' });
         }
 
-        done('', user.Items[0]);
+        done(null, user.Items[0]);
     });
   });
 };
