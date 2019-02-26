@@ -30,7 +30,7 @@ apiRoutes.post('/sign-up', function(req, res) {
     });
 });
 
-apiRoutes.post('/authenticate', function(req, res) {
+apiRoutes.post('/login', function(req, res) {
 
   // find the user
   BaseTable.getUser(req.body.email)
@@ -50,7 +50,6 @@ apiRoutes.post('/authenticate', function(req, res) {
             // Now we will create token and save following information in it.
             const payload = { 
                 UserSK: user.Items[0]["SK"], 
-                name: user.Items[0]["name"], 
                 email: user.Items[0]["email"]   
             };
 
